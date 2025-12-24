@@ -101,14 +101,23 @@ function handleSetupSubmit(e) {
     
     // Mark as initialized
     state.initialized = true;
+    
+    // Hide setup modal with animation
+    initialSetup.style.animation = 'fadeOut 0.5s forwards';
+    
+    // Show main app after animation
+    setTimeout(() => {
+        initialSetup.classList.add('hidden');
+        app.classList.remove('hidden');
+        app.style.animation = 'fadeIn 0.5s forwards';
+        
+        // Update UI and show welcome message
+        updateUI();
+        showTemporaryMessage('Игра началась! Удачи в достижении целей!', 'success');
+    }, 500);
+    
+    // Update last update time
     state.lastUpdate = new Date().toDateString();
-    
-    // Save state
-    saveState();
-    
-    // Hide setup and show main app
-    initialSetup.classList.add('hidden');
-    app.classList.remove('hidden');
     
     // Show welcome message
     feedbackText.textContent = 'Синхронизация завершена. Присвоен Ранг E. Начинаю процесс левелинга...';
