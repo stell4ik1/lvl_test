@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>System: Monarch</title>
+    <meta name="theme-color" content="#1a1a2e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/assets/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app" class="hidden">
+        <header class="status-bar">
+            <div class="player-info">
+                <h1>Игрок <span id="player-level">1</span> Ур.</h1>
+                <div class="rank">Ранг: <span id="player-rank">E</span></div>
+            </div>
+            <div class="stats">
+                <div class="stat-bar">
+                    <label>HP</label>
+                    <div class="bar-container">
+                        <div id="hp-bar" class="bar"></div>
+                    </div>
+                    <span id="hp-value">100/100</span>
+                </div>
+                <div class="stat-bar">
+                    <label>MP</label>
+                    <div class="bar-container">
+                        <div id="mp-bar" class="bar"></div>
+                    </div>
+                    <span id="mp-value">100/100</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section id="ai-feedback" class="panel">
+                <h2>AI Feedback</h2>
+                <div id="feedback-text">Добро пожаловать в Систему, Игрок. Начни свой путь к величию.</div>
+            </section>
+
+            <section id="finance-engine" class="panel">
+                <h2>Финансы</h2>
+                <div class="debt-progress">
+                    <div class="progress-bar">
+                        <div id="debt-progress" class="progress"></div>
+                    </div>
+                    <div id="debt-amount">Долг: 187,000/0 ₽</div>
+                </div>
+                <div class="finance-input">
+                    <input type="number" id="income-input" placeholder="Введите доход">
+                    <button id="add-income">+</button>
+                </div>
+            </section>
+
+            <section id="skills" class="panel">
+                <h2>Навыки</h2>
+                <div class="skill">
+                    <div class="skill-info">
+                        <span>C# Mastery</span>
+                        <span id="csharp-progress">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="csharp-bar" class="progress"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-info">
+                        <span>Iron Body</span>
+                        <span id="gym-progress">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="gym-bar" class="progress"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-info">
+                        <span>Indomitable Will</span>
+                        <span id="willpower-progress">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="willpower-bar" class="progress"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="daily-quests" class="panel">
+                <h2>Ежедневные квесты</h2>
+                <ul id="quests-list">
+                    <li data-quest="wake-up">
+                        <input type="checkbox" id="wake-up">
+                        <label for="wake-up">Подъем в 5:30</label>
+                    </li>
+                    <li data-quest="work">
+                        <input type="checkbox" id="work">
+                        <label for="work">Работа/Поиск работы</label>
+                    </li>
+                    <li data-quest="blockbench">
+                        <input type="checkbox" id="blockbench">
+                        <label for="blockbench">1 час Blockbench</label>
+                    </li>
+                    <li data-quest="purity">
+                        <input type="checkbox" id="purity">
+                        <label for="purity">Чистота (18+)</label>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <div id="initial-setup" class="modal">
+        <div class="modal-content">
+            <h2>Начальная синхронизация</h2>
+            <p>Добро пожаловать, Игрок. Инициализирую систему...</p>
+            <form id="setup-form">
+                <div class="form-group">
+                    <label for="debt">Твоя текущая задолженность (₽)</label>
+                    <input type="number" id="debt" value="187000" required>
+                </div>
+                <div class="form-group">
+                    <label for="bench-press">Твой максимальный жим лежа (кг)</label>
+                    <input type="number" id="bench-press" required>
+                </div>
+                <div class="form-group">
+                    <label for="clean-days">Дней в состоянии чистоты</label>
+                    <input type="number" id="clean-days" required>
+                </div>
+                <div class="form-group">
+                    <label for="employment">Твой статус занятости</label>
+                    <select id="employment" required>
+                        <option value="working">Работаю</option>
+                        <option value="searching">В поиске</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">Начать игру</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
