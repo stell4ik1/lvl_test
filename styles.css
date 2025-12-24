@@ -418,3 +418,51 @@ input, textarea {
     -ms-user-select: text;
     user-select: text;
 }
+
+/* Message styles */
+.message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 24px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    z-index: 1000;
+    opacity: 0.95;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease-out;
+}
+
+.message.info {
+    background: var(--primary);
+}
+
+.message.success {
+    background: var(--success);
+}
+
+.message.error {
+    background: var(--danger);
+}
+
+.message.level-up {
+    background: linear-gradient(90deg, #fdcb6e, #e17055);
+    font-size: 1.2em;
+    padding: 15px 30px;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease-out forwards;
+}
+
+@keyframes slideIn {
+    from { transform: translate(-50%, 100px); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 0.95; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 0.95; }
+    to { opacity: 0; transform: translate(-50%, -20px); }
+}
