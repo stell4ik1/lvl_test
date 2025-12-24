@@ -432,6 +432,19 @@ function formatNumber(num) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
 
+// Register Service Worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+                console.log('ServiceWorker registration successful');
+            })
+            .catch(err => {
+                console.error('ServiceWorker registration failed: ', err);
+            });
+    });
+}
+
 // Add CSS for messages
 const style = document.createElement('style');
 style.textContent = `
